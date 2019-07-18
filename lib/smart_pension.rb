@@ -58,6 +58,6 @@ end
 
 d = Database.new('webserver.log')
 p d.populate_hash(d.parse_file)
-# p d.count_page_visits(d.handle_pages_array)
+p d.count_page_visits(d.handle_pages_array)
 
 
