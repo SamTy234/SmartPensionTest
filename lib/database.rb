@@ -1,7 +1,6 @@
 require 'csv'
 
 class Database
-
   def initialize(file_path)
     @file_path = file_path
   end
@@ -36,7 +35,7 @@ class Database
   end
 
   # private
-    # Parses the log file into an array
+  # Parses the log file into an array
   def parse_file
     pages_with_ip =[]
     CSV.foreach(@file_path){|row| pages_with_ip << row[0].split(' ')}

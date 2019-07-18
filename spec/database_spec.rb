@@ -4,7 +4,6 @@ describe Database do
   let(:file_path) {"spec/webserver.log"}
   # db = Database.new(file_path)
 
-
   describe "#initialize" do
     it "should take the log file as its only argument" do
       expect(Database.instance_method(:initialize).arity).to eq(1)
