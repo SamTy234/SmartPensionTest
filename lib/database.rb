@@ -6,26 +6,19 @@ class Database
     @file_path = file_path
   end
 
-  # Parses the log file into an array
-  def parse_file
-    pages_with_ip =[]
-    CSV.foreach(@file_path){|row| pages_with_ip << row[0].split(' ')}
-    return pages_with_ip
-  end
-
   # Takes in an array and returns a sorted array of the pages.
-  def populate_pages_array(data)
+  def populate_pages_array
     pages = []
-    data.each {|page| pages << page[0]}
+    parse_file.each {|page| pages << page[0]}
     pages.sort!
     return pages
   end
 
-  # Populates the has with the pages as keys and ip addresses as an array of
+  # Populates the hash with the pages as keys and ip addresses as an array of
   # values.
-  def populate_and_count_hash(data)
+  def populate_and_count_hash
     data_hash = Hash.new(){|hsh, key| hsh[key] =[]}
-    data.each{|key, value| data_hash[key] << value}
+    parse_file.each{|key, value| data_hash[key] << value}
     data_hash.each do |key, value|
       value.uniq!
       data_hash[key] = value.count
@@ -40,6 +33,14 @@ class Database
     page_count = Hash.new(0)
     pages.each_with_object(page_count){|page, new_hash| new_hash[page] += 1}
     return page_count.sort_by{|key, value| -value}.to_h
+  end
+
+  private
+    # Parses the log file into an array
+  def parse_file
+    pages_with_ip =[]
+    CSV.foreach(@file_path){|row| pages_with_ip << row[0].split(' ')}
+    return pages_with_ip
   end
 end
 
