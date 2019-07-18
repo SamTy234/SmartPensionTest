@@ -4,6 +4,7 @@ This was programmed with the intention that any logfile provided in the same for
 
 It consists of two folders:
 - Lib: Containing two files for the solution and the webserver.log file provided.
--Spec: Contains all the relevant folders for the test cases.
+- Spec: Contains all the relevant folders for the test cases.
+
 
 
