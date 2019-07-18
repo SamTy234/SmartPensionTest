@@ -35,7 +35,7 @@ class Database
     return page_count.sort_by{|key, value| -value}.to_h
   end
 
-  private
+  # private
     # Parses the log file into an array
   def parse_file
     pages_with_ip =[]
