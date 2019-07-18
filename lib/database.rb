@@ -10,7 +10,7 @@ class Database
     pages = []
     parse_file.each {|page| pages << page[0]}
     pages.sort!
-    return pages
+    if pages.empty? then raise("Error: Log file is empty") else return pages end
   end
 
   # Populates the hash with the pages as keys and ip addresses as an array of
