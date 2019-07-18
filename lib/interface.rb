@@ -13,7 +13,7 @@ end
 
 d = Database.new('webserver.log')
 page_visits = d.count_page_visits(d.populate_pages_array(d.parse_file))
-unique_page_visits = d.populate_hash(d.parse_file)
+unique_page_visits = d.populate_and_count_hash(d.parse_file)
 
 display_results(page_visits)
 display_unique_results(unique_page_visits)
