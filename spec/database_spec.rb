@@ -31,8 +31,10 @@ describe Database do
 
   describe "#count_page_visits" do
     it "should return a hash" do
-      expect(Database.new(file_path).count_page_visits(
-        Database.new(file_path).parse_file)).to be_a Hash
+      expect(Database.new(file_path).count_page_visits).to be_a Hash
+    end
+    it "should return a correct set of keys" do
+      expect(Database.new(file_path).count_page_visits.keys).to be_eql ["/help_page/1", "/contact", "/about/2", "/home", "/index", "/about"]
     end
   end
 end
